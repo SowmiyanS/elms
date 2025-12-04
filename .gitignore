@@ -43,3 +43,9 @@ Thumbs.db
 
 tags
 firebase
+
+# ------------------
+# Standard Firebase Ignores
+# ------------------
+.firebase/         # Firebase local environment/emulation data (Crucial to ignore)
+firebase-debug.log # Firebase CLI debug logs

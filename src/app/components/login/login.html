@@ -1,0 +1,43 @@
+<div class="auth-container shadow-2xl">
+    <h2 class="text-2xl font-bold text-center mb-5">
+        {{ isRegistering() ? 'Student Registration' : 'Student Login' }}
+    </h2>
+
+    <form (ngSubmit)="submitAuth()">
+        <!-- Email Input -->
+        <input 
+            type="email" 
+            placeholder="Email (e.g., student@elms.edu)"
+            required
+            [ngModel]="email()"
+            (ngModelChange)="email.set($event)"
+            name="email"
+            autocomplete="email"
+        >
+
+        <!-- Password Input -->
+        <input 
+            type="password" 
+            placeholder="Password (min 6 characters)"
+            required
+            [ngModel]="password()"
+            (ngModelChange)="password.set($event)"
+            name="password"
+            autocomplete="current-password"
+        >
+
+        <!-- Error Message -->
+        <p *ngIf="error()" class="error">{{ error() }}</p>
+
+        <!-- Submit Button -->
+        <button type="submit" [disabled]="isLoading()">
+            {{ isLoading() ? 'Processing...' : (isRegistering() ? 'Register Account' : 'Sign In') }}
+        </button>
+    </form>
+
+    <div class="mt-4 text-center text-sm">
+        <a href="#" (click)="isRegistering.set(!isRegistering())" class="text-indigo-600 hover:underline">
+            {{ isRegistering() ? 'Already have an account? Sign In.' : 'Need an account? Register Here.' }}
+        </a>
+    </div>
+</div>
